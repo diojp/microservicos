@@ -2,8 +2,9 @@ import jwt from "jsonwebtoken";
 
 export const createUserToken = (user) => {
     const options = {
-        expiresIn: '1h' // Token expira em 1 hora
+        expiresIn: '10s' // Token expira em 1 hora
       };
+      
     const token = jwt.sign({
         username: user.name,
         id: user._id

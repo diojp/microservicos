@@ -3,11 +3,11 @@
 Thumbs.db
 
 # Ignore diretório de nodemodules
-auth-ms/nodemodules/
-gateway/nodemodules/
-posts-ms/nodemodules/
-service-registry/nodemodules/
-users-ms/nodemodules/
+auth-ms/node_modules/
+gateway/node_modules/
+posts-ms/node_modules/
+service-registry/node_modules/
+users-ms/node_modules/
 
 # Ignore arquivos de log
 *.log
