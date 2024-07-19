@@ -1,0 +1,13 @@
+# Ignore arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignore diretório de nodemodules
+auth-ms/nodemodules/
+gateway/nodemodules/
+posts-ms/nodemodules/
+service-registry/nodemodules/
+users-ms/nodemodules/
+
+# Ignore arquivos de log
+*.log
