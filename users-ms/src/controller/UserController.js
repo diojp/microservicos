@@ -3,13 +3,25 @@ import bcrypt from 'bcrypt';
 import axios from 'axios';
 
 export class UserController{
+    
     static async findAll(req, res){
+        const authHeader = req.headers['authorization'];
+        if (authHeader && authHeader.startsWith('Bearer ')) {
+            req.token = authHeader.split(' ')[1]; // Extrai o token
+        } else {
+            req.token = null; // Não há token
+        }
+
         try{
             const users = await User.findAll({attributes:{exclude:['password']}});
             const usersAndPosts = await Promise.all(
                 users.map(async(user)=>{
                     try{ 
-                        const response = await axios.get(`${process.env.POST_SERVICE_URL}/posts/user/${user.id}`);
+                        const response = await axios.get(`${process.env.POST_SERVICE_URL}/posts/user/${user.id}`,{
+                            headers: {
+                              'Authorization': `Bearer ${req.token}`
+                            }
+                          });
 
                         const posts = response.data.post;
 
